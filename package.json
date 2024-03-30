@@ -1,11 +1,19 @@
 {
-  "name": "pino-transmit-http",
-  "version": "1.0.0-alpha.5",
+  "name": "@procube/pino-transmit-http",
+  "version": "0.0.2-rc.0",
   "description": "A pino browser transmit that send log statements over HTTP",
   "main": "index.js",
+  "engines": {
+    "npm": "please-use-yarn",
+    "yarn": ">= 4.1.1",
+    "node": ">= 18"
+  },
+  "type": "module",
   "scripts": {
-    "test": "tap --no-cov 'test/**/*.test.js'",
+    "test": "tap 'test/**/*.test.js'",
     "lint": "standard",
+    "build": "tsc -p tsconfig.json",
+    "start": "ts-node --esm index.ts",
     "ci": "standard | snazzy && tap --cov 'test/**/*.test.js'"
   },
   "precommit": [
@@ -14,31 +22,35 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/sventschui/pino-transmit-http.git"
+    "url": "git@github.com:procube-open/pino-transmit-http.git"
   },
   "keywords": [
     "pino",
     "transmit",
     "http"
   ],
-  "author": "Sven Tschui <sventschui@gmail.com>",
+  "author": "Mitsuru Nakakawaji <mitsuru@procube.jp>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/sventschui/pino-transmit-http/issues"
+    "url": "https://github.com/procube-open/pino-transmit-http/issues"
   },
-  "homepage": "https://github.com/sventschui/pino-transmit-http#readme",
+  "homepage": "https://github.com/procube-open/pino-transmit-http/pino-transmit-http#readme",
   "devDependencies": {
-    "pino": "^4.17.3",
-    "pre-commit": "^1.2.2",
-    "snazzy": "^7.1.1",
-    "standard": "^9.0.0",
-    "tap": "^10.2.2"
+    "@changesets/cli": "2.27.1",
+    "@procube/cs-tools": "1.0.8",
+    "eslint-cjs-to-esm": "3.0.2",
+    "pino": "8.19.0",
+    "pre-commit": "1.2.2",
+    "snazzy": "9.0.0",
+    "standard": "17.1.0",
+    "tap": "18.7.2"
   },
   "dependencies": {
-    "lodash.debounce": "^4.0.8",
-    "lodash.throttle": "^4.1.1"
+    "lodash.debounce": "4.0.8",
+    "lodash.throttle": "4.1.1"
   },
   "peerDependencies": {
-    "pino": "^4.17.3"
-  }
+    "pino": "4.17.3"
+  },
+  "packageManager": "yarn@4.1.1"
 }

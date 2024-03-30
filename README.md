@@ -1,6 +1,7 @@
-# pino-transmit-http [![Build Status](https://travis-ci.org/sventschui/pino-transmit-http.svg?branch=master)](https://travis-ci.org/sventschui/pino-transmit-http) [![Coverage Status](https://coveralls.io/repos/github/sventschui/pino-transmit-http/badge.svg?branch=master)](https://coveralls.io/github/sventschui/pino-transmit-http?branch=master)
+# pino-transmit-http 
 
-**Lead maintainer:** [Sven Tschui](https://github.com/sventschui)
+This project is fork from https://github.com/sventschui/pino-transmit-http.
+Thanks for [sventschui](https://github.com/sventschui).
 
 This is a browser transmit for the [Pino](https://github.com/pinojs/pino) logger
 that sends log statements created in a browser environment to a remote server using
@@ -9,7 +10,7 @@ HTTP calls (XHR, fetch or sendBeacon depending on availability).
 You can use it like so:
 
 ```sh
-$ npm install pino pino-transmit-http
+$ npm install pino @procube/pino-transmit-http
 ```
 
 ```js

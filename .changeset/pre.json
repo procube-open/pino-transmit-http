@@ -1,0 +1,10 @@
+{
+  "mode": "pre",
+  "tag": "rc",
+  "initialVersions": {
+    "@procube/pino-transmit-http": "0.0.1"
+  },
+  "changesets": [
+    "moody-cheetahs-buy"
+  ]
+}
