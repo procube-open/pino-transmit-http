@@ -19,6 +19,9 @@ jobs:
       - name: Check if changeset is in prerelease mode
         id: check-in-pre
         run: echo "pre=$(test -r .changeset/pre.json; echo $?)"  >> "$GITHUB_OUTPUT"
+      - name: Get package scope to be released
+        id: get-scope
+        run: node -e "console.log('scope=' + require('./package.json').name).split('/')[0]" >> "$GITHUB_OUTPUT"
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
@@ -27,17 +30,12 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
           token: ${{ secrets.GITHUB_TOKEN }}
           # Defaults to the user or organization that owns the workflow file
-          scope: '@procube'
-      - name: Get package name to be released
-        id: get-name
-        run: node -e "console.log('name=' + require('./package.json').name)" >> "$GITHUB_OUTPUT"
-      - name: Get version to be released
-        id: get-version
-        run: node -e "console.log('version=' + require('./package.json').version)" >> "$GITHUB_OUTPUT"
+          scope: ${{ steps.get-scope.scope.version }}
       - name: Publish npm package
         if: ${{ steps.check-in-pre.outputs.pre == 0 }}
         run: |
-          yarn
+          yarn install
+          yarn build
           yarn npm publish
         env:
           NPM_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
