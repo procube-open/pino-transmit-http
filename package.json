@@ -1,6 +1,6 @@
 {
   "name": "@procube/pino-transmit-http",
-  "version": "0.0.2-rc.0",
+  "version": "0.0.2-rc.1",
   "description": "A pino browser transmit that send log statements over HTTP",
   "main": "index.js",
   "engines": {
@@ -11,10 +11,10 @@
   "type": "module",
   "scripts": {
     "test": "tap 'test/**/*.test.js'",
-    "lint": "standard",
+    "lint": "eslint",
     "build": "tsc -p tsconfig.json",
     "start": "ts-node --esm index.ts",
-    "ci": "standard | snazzy && tap --cov 'test/**/*.test.js'"
+    "ci": "eslint && tap --cov 'test/**/*.test.js'"
   },
   "precommit": [
     "lint",
@@ -38,16 +38,21 @@
   "devDependencies": {
     "@changesets/cli": "2.27.1",
     "@procube/cs-tools": "1.0.8",
-    "eslint-cjs-to-esm": "3.0.2",
+    "@types/eslint": "^8",
+    "@types/lodash.debounce": "4.0.9",
+    "@types/lodash.throttle": "4.1.9",
+    "@types/pako": "2.0.3",
+    "eslint": "8.57.0",
     "pino": "8.19.0",
     "pre-commit": "1.2.2",
-    "snazzy": "9.0.0",
-    "standard": "17.1.0",
-    "tap": "18.7.2"
+    "tap": "18.7.2",
+    "typescript": "5.4.3"
   },
   "dependencies": {
+    "@msgpack/msgpack": "3.0.0-beta2",
     "lodash.debounce": "4.0.8",
-    "lodash.throttle": "4.1.1"
+    "lodash.throttle": "4.1.1",
+    "pako": "2.1.0"
   },
   "peerDependencies": {
     "pino": "4.17.3"
