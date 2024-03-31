@@ -1,5 +1,11 @@
 # @procube/pino-transmit-http
 
+## 0.0.2-rc.4
+
+### Patch Changes
+
+-   Fix actions error
+
 ## 0.0.2-rc.3
 
 ### Patch Changes

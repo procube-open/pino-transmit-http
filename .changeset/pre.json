@@ -5,6 +5,7 @@
     "@procube/pino-transmit-http": "0.0.1"
   },
   "changesets": [
+    "fair-carrots-poke",
     "flat-jobs-jump",
     "moody-cheetahs-buy",
     "sixty-vans-enjoy",
