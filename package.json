@@ -17,8 +17,7 @@
     "ci": "eslint && tap --cov 'test/**/*.test.js'"
   },
   "precommit": [
-    "lint",
-    "test"
+    "lint"
   ],
   "repository": {
     "type": "git",
