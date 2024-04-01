@@ -1,0 +1,11 @@
+{
+  "mode": "pre",
+  "tag": "rc",
+  "initialVersions": {
+    "@procube/pino-transmit-http": "0.0.2",
+    "client": "0.1.1"
+  },
+  "changesets": [
+    "six-ties-design"
+  ]
+}

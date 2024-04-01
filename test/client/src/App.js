@@ -6,7 +6,8 @@ import pinoTransmitHttp from "@procube/pino-transmit-http"
 const sleep = msec => new Promise(resolve => setTimeout(resolve, msec));
 const logger = pino({
   browser: {
-    transmit: pinoTransmitHttp({throttle: 30000, url: '/logs'})
+    asObject: false,
+    transmit: pinoTransmitHttp({throttle: 30000, url: '/operations'})
   }
 })
 
@@ -14,14 +15,21 @@ async function log() {
   logger.info({msg: "Hello, World!", operation: "start"})
   await sleep(1000)
   logger.info({msg: "Working now. 1000", operation: "update"})
-  await sleep(30000)
-  logger.info({msg: "Working now. 31000", operation: "update"})
   await sleep(1000)
-  logger.info({msg: "Working now. 32000", operation: "update"})
-} 
+  logger.info({msg: "Working now. 2000", operation: "update"})
+  await sleep(30000)
+  logger.info({msg: "Working now. 33000", operation: "update"})
+  await sleep(1000)
+  logger.info({msg: "Working now. 34000", operation: "update"})
+}
+
+let started = false
 
 function App() {
-    log()
+    if (!started) {
+        started = true
+        log()
+    }
     return (
         <div className="App">
             <header className="App-header">

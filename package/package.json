@@ -1,0 +1,63 @@
+{
+  "name": "@procube/pino-transmit-http",
+  "version": "0.0.3-rc.0",
+  "description": "A pino browser transmit that send log statements over HTTP",
+  "main": "dist/index.js",
+  "engines": {
+    "npm": "please-use-yarn",
+    "yarn": ">= 4.1.1",
+    "node": ">= 18"
+  },
+  "type": "module",
+  "scripts": {
+    "test": "tap 'test/**/*.test.js'",
+    "lint": "eslint",
+    "build": "tsc -p tsconfig.json",
+    "start": "ts-node --esm index.ts",
+    "ci": "eslint && tap --cov 'test/**/*.test.js'"
+  },
+  "precommit": [
+    "lint"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:procube-open/pino-transmit-http.git"
+  },
+  "workspaces": [
+    "test/client",
+    "."
+  ],
+  "keywords": [
+    "pino",
+    "transmit",
+    "http"
+  ],
+  "author": "Mitsuru Nakakawaji <mitsuru@procube.jp>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/procube-open/pino-transmit-http/issues"
+  },
+  "homepage": "https://github.com/procube-open/pino-transmit-http/pino-transmit-http#readme",
+  "devDependencies": {
+    "@changesets/cli": "2.27.1",
+    "@types/eslint": "^8",
+    "@types/lodash.debounce": "4.0.9",
+    "@types/lodash.throttle": "4.1.9",
+    "@types/pako": "2.0.3",
+    "eslint": "8.57.0",
+    "pino": "8.19.0",
+    "pre-commit": "1.2.2",
+    "tap": "18.7.2",
+    "typescript": "5.4.3"
+  },
+  "dependencies": {
+    "@msgpack/msgpack": "3.0.0-beta2",
+    "lodash.debounce": "4.0.8",
+    "lodash.throttle": "4.1.1",
+    "pako": "2.1.0"
+  },
+  "peerDependencies": {
+    "pino": "8.19.0"
+  },
+  "packageManager": "yarn@4.1.1"
+}

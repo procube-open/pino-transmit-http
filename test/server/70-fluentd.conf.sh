@@ -36,7 +36,7 @@ cat > /etc/fluent/conf.d/auditlogs.conf << __EOF
   port 9880
   bind 0.0.0.0
   body_size_limit 32m
-  keepalive_timeout 10s
+  keepalive_timeout 30s
 </source>
 __EOF
 
@@ -46,12 +46,12 @@ cat > /etc/fluent/fluentd.conf << __EOF
 @include /etc/fluent/conf.d/*.conf
 
 # Single MongoDB
-<match access.*>
+<match operations>
   @type mongo
   host ${LOGDB_HOST}
   port 27017
   database fluentd
-  collection access
+  collection operation
 
   # for capped collection
   capped
