@@ -1,6 +1,6 @@
 {
   "name": "@procube/pino-transmit-http",
-  "version": "0.0.2-rc.4",
+  "version": "0.0.2-rc.5",
   "description": "A pino browser transmit that send log statements over HTTP",
   "main": "index.js",
   "engines": {
@@ -23,6 +23,10 @@
     "type": "git",
     "url": "git@github.com:procube-open/pino-transmit-http.git"
   },
+  "workspaces": [
+    "test/client",
+    "."
+  ],
   "keywords": [
     "pino",
     "transmit",
@@ -54,7 +58,7 @@
     "pako": "2.1.0"
   },
   "peerDependencies": {
-    "pino": "4.17.3"
+    "pino": "8.19.0"
   },
   "packageManager": "yarn@4.1.1"
 }

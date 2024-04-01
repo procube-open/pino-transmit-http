@@ -31,7 +31,7 @@ function exception2string(e: any) {
     return "Unknown error"
 }
 
-export function transmitHttp(
+export default function transmitHttp(
     inOpts: Partial<Options>,
     _logger: BaseLogger,
 ): Required<Options>["browser"]["transmit"] {
@@ -56,7 +56,11 @@ export function transmitHttp(
             return
         }
         try {
-            const data = encode(collection)
+            const msgpackPreifx = "msgpack="
+            const collectionData =  encode(collection)
+            const data = new Uint8Array(msgpackPreifx.length + collectionData.length);
+            data.set(new TextEncoder().encode(msgpackPreifx));
+            data.set(collectionData, msgpackPreifx.length);
             collection = []
             const gzippedBody = gzip(data)
             fetch(opts.url, {
@@ -64,7 +68,7 @@ export function transmitHttp(
                 mode: 'same-origin',
                 headers: {
                   'Content-Encoding': 'gzip',
-                  'Content-Type': 'application/json'
+                  'Content-Type': 'application/x-www-form-urlencoded'
                 },
                 body: gzippedBody
               })

@@ -1,5 +1,11 @@
 # @procube/pino-transmit-http
 
+## 0.0.2-rc.5
+
+### Patch Changes
+
+-   replace test content
+
 ## 0.0.2-rc.4
 
 ### Patch Changes
