@@ -57,6 +57,13 @@ typings/
 
 # Yarn Integrity file
 .yarn-integrity
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
 
 # dotenv environment variables file
 .env
@@ -117,6 +124,9 @@ crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 
+# TAP
+.tap
+
 ### JetBrains Patch ###
 # Comment Reason: https://github.com/joeblau/gitignore.io/issues/186#issuecomment-215987721
 
@@ -126,3 +136,5 @@ fabric.properties
 # *.ipr
 
 # End of https://www.gitignore.io/api/jetbrains
+
+/index.js

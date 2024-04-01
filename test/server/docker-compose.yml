@@ -1,0 +1,60 @@
+services:
+  web-server:
+    build:
+      context: .
+    container_name: web-server
+    environment:
+      NGINX_LOG_LEVEL: debug
+      LOGDB_HOST: mongo-db
+      LOGDB_ROOT_USER: root
+      LOGDB_ROOT_PASSWORD: testpassword
+      LOGDB_USER: fluent
+      LDGDB_PASSWORD: testpassword
+    # ports:
+    #   - 80:80
+
+  mongo-db:
+    container_name: mongo-db
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: testpassword
+    # ports:
+    #   - 27017:27017
+    volumes:
+      - log_db:/data/db
+      - log_db_config:/data/configdb
+  mongo-db-express:
+    container_name: mongo-db-express
+    image: mongo-express
+    restart: always
+    ports:
+      - 8081:8081
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: testpassword
+      ME_CONFIG_MONGODB_SERVER: mongo-db
+    depends_on:
+      - mongo-db
+    profiles:
+      - test
+  # log-analyzer:
+  #   container_name: log-analyzer.${INTERNAL_DOMAIN_SUFFIX}
+  #   image: metabase/metabase:latest
+  #   environment:
+  #     - MB_DB_FILE=/metabase-data/metabase.db
+  #   # ports 3000
+  #   volumes:
+  #     - metabase_data:/metabase-data
+volumes:
+  log_db:
+    driver: local
+  log_db_config:
+    driver: local
+  # metabase_data:
+  #   driver: local
+networks:
+  default:
+    name: app-network
+    external: true
