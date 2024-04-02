@@ -6,6 +6,7 @@
     "client": "0.1.2"
   },
   "changesets": [
-    "clean-terms-pull"
+    "clean-terms-pull",
+    "lucky-cats-tan"
   ]
 }

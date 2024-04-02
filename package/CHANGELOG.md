@@ -1,5 +1,11 @@
 # @procube/pino-transmit-http
 
+## 2.0.0-rc.1
+
+### Major Changes
+
+- Fix typo of directory
+
 ## 2.0.0-rc.0
 
 ### Major Changes
