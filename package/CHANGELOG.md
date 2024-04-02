@@ -1,5 +1,11 @@
 # @procube/pino-transmit-http
 
+## 2.0.0-rc.0
+
+### Major Changes
+
+- Docs README.md
+
 ## 1.0.0
 
 ### Major Changes
