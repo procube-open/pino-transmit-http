@@ -1,5 +1,14 @@
 # client
 
+## 0.1.3
+
+### Patch Changes
+
+- Updated dependencies [d119712]
+- Updated dependencies [f584951]
+- Updated dependencies [fb1e554]
+  - @procube/pino-transmit-http@2.0.0
+
 ## 0.1.3-rc.2
 
 ### Patch Changes

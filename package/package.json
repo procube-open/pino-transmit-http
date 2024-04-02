@@ -1,6 +1,6 @@
 {
   "name": "@procube/pino-transmit-http",
-  "version": "1.0.1-rc.2",
+  "version": "2.0.0",
   "description": "A pino browser transmit that send log statements over HTTP",
   "private": false,
   "main": "dist/index.js",
