@@ -1,5 +1,11 @@
 # @procube/pino-transmit-http
 
+## 1.0.0-rc.6
+
+### Major Changes
+
+- publish to npmjs.com
+
 ## 1.0.0-rc.5
 
 ### Major Changes
