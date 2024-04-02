@@ -6,6 +6,7 @@
     "client": "0.1.1"
   },
   "changesets": [
+    "rich-cameras-drum",
     "six-ties-design"
   ]
 }

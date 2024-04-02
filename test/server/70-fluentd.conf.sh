@@ -11,6 +11,9 @@ entrypoint_log() {
 }
 
 entrypoint_log "$ME: info: register fluentd to supervisord."
+cat > /etc/supervisor/conf.d/fluentd.conf << 'EOF'
+fluentd
+EOF
 
 cat > /etc/supervisor/conf.d/fluentd.conf << 'EOF'
 [program:fluentd]
@@ -36,7 +39,12 @@ cat > /etc/fluent/conf.d/auditlogs.conf << __EOF
   port 9880
   bind 0.0.0.0
   body_size_limit 32m
-  keepalive_timeout 30s
+  keepalive_timeout 10s
+  use_204_response true
+  add_remote_addr true
+  <transport tcp>
+    linger_timeout 1
+  </transport>
 </source>
 __EOF
 
@@ -45,26 +53,31 @@ entrypoint_log "$ME: info: put fluentd configuration for mongodb."
 cat > /etc/fluent/fluentd.conf << __EOF
 @include /etc/fluent/conf.d/*.conf
 
-# Single MongoDB
 <match operations>
-  @type mongo
-  host ${LOGDB_HOST}
-  port 27017
-  database fluentd
-  collection operation
+  @type copy
+  <store>
+    @type stdout
+  </store>
+  <store>
+    @type mongo
+    host ${LOGDB_HOST}
+    port 27017
+    database fluentd
+    collection operation
 
-  # for capped collection
-  capped
-  capped_size 1024m
+    # for capped collection
+    capped
+    capped_size 1024m
 
-  # authentication
-  user ${LOGDB_USER}
-  password ${LOGDB_PASSWORD}
+    # authentication
+    user ${LOGDB_USER}
+    password ${LOGDB_PASSWORD}
 
-  <buffer>
-    # flush
-    flush_interval 10s
-  </buffer>
+    <buffer>
+      # flush
+      flush_interval 10s
+    </buffer>
+  </store>
 </match>
 __EOF
 
