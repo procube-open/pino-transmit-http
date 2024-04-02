@@ -1,5 +1,11 @@
 # @procube/pino-transmit-http
 
+## 1.0.1-rc.2
+
+### Patch Changes
+
+- Fix do not release 2.0.0
+
 ## 2.0.0-rc.1
 
 ### Major Changes
