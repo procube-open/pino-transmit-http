@@ -1,5 +1,11 @@
 # @procube/pino-transmit-http
 
+## 1.0.0-rc.8
+
+### Major Changes
+
+- Fix add --access=public
+
 ## 1.0.0-rc.7
 
 ### Major Changes

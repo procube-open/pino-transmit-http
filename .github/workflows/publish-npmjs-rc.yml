@@ -39,6 +39,6 @@ jobs:
           echo "npmRegistryServer: 'https://registry.npmjs.org/'" >> .yarnrc.yml
           yarn install
           yarn build
-          yarn npm publish
+          yarn npm publish --access=public
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
