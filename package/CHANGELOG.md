@@ -1,5 +1,11 @@
 # @procube/pino-transmit-http
 
+## 1.0.0-rc.5
+
+### Major Changes
+
+- Fix private: true -> false
+
 ## 1.0.0-rc.4
 
 ### Major Changes
