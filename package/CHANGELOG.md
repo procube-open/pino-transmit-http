@@ -1,5 +1,11 @@
 # @procube/pino-transmit-http
 
+## 1.0.0-rc.4
+
+### Major Changes
+
+- change to public repository
+
 ## 1.0.0-rc.3
 
 ### Minor Changes
