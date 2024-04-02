@@ -1,5 +1,25 @@
 # @procube/pino-transmit-http
 
+## 1.0.0
+
+### Major Changes
+
+- aa9dac3: fix build error for authentication
+- cd187ca: config for Yarn 2
+- c648bf3: Fix private: true -> false
+- b54c798: change to public repository
+- 0cbd41f: fix build error
+- 7cec485: publish to npmjs.com
+- 528b8dc: Fix add --access=public
+
+### Minor Changes
+
+- 5e82f15: Fix error no token
+
+### Patch Changes
+
+- a5e931e: debug progress
+
 ## 1.0.0-rc.8
 
 ### Major Changes

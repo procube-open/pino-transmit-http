@@ -1,5 +1,21 @@
 # client
 
+## 0.1.2
+
+### Patch Changes
+
+- a5e931e: debug progress
+- Updated dependencies [aa9dac3]
+- Updated dependencies [cd187ca]
+- Updated dependencies [c648bf3]
+- Updated dependencies [b54c798]
+- Updated dependencies [5e82f15]
+- Updated dependencies [0cbd41f]
+- Updated dependencies [a5e931e]
+- Updated dependencies [7cec485]
+- Updated dependencies [528b8dc]
+  - @procube/pino-transmit-http@1.0.0
+
 ## 0.1.2-rc.8
 
 ### Patch Changes
