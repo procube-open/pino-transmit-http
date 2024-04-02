@@ -1,5 +1,11 @@
 # @procube/pino-transmit-http
 
+## 1.0.0-rc.7
+
+### Major Changes
+
+- config for Yarn 2
+
 ## 1.0.0-rc.6
 
 ### Major Changes

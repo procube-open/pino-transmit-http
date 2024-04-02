@@ -40,7 +40,7 @@ jobs:
         run: |
           cd package
           echo npmAuthToken: "$NODE_AUTH_TOKEN" >> ./.yarnrc.yml
-          yarn config set registry https://registry.npmjs.org/
+          echo "npmRegistryServer: 'https://registry.npmjs.org/'" >> .yarnrc.yml
           yarn install
           yarn build
           yarn npm publish
