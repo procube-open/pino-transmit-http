@@ -2,17 +2,17 @@ import throttle from "lodash.throttle"
 import debounce from "lodash.debounce"
 import { encode } from "@msgpack/msgpack"
 import { LoggerOptions, BaseLogger } from "pino"
-import { gzip } from 'pako'
+import { gzip } from "pako"
 
 interface Options extends LoggerOptions {
-    throttle?: number,
-    debounce?: number,
+    throttle?: number
+    debounce?: number
     url: string
- }
+}
 
 const defaultOptions: Options = {
     throttle: 500,
-    url: "/log"
+    url: "/log",
 }
 
 function exception2string(e: any) {
@@ -31,6 +31,23 @@ function exception2string(e: any) {
     return "Unknown error"
 }
 
+function concatenateUint8Arrays(arrayOfArrays: Uint8Array[]): Uint8Array {
+    const totalLength = arrayOfArrays.reduce(
+        (total, arr) => total + arr.length,
+        0,
+    )
+
+    const result = new Uint8Array(totalLength)
+
+    let offset = 0
+    for (const arr of arrayOfArrays) {
+        result.set(arr, offset)
+        offset += arr.length
+    }
+
+    return result
+}
+
 export default function transmitHttp(
     inOpts: Partial<Options>,
     _logger: BaseLogger,
@@ -42,56 +59,57 @@ export default function transmitHttp(
         !window.navigator ||
         !window.navigator.sendBeacon
     ) {
-        console.error(
-            "pino-transmit-http: sendBeacon is not available.",
-        )
+        console.error("pino-transmit-http: sendBeacon is not available.")
         return undefined
     }
 
     let collection: any[] = []
-    let isUnloading: boolean = false
 
     async function rawSend(): Promise<void> {
         if (collection.length === 0) {
             return
         }
         try {
-            const msgpackPreifx = "msgpack="
-            const collectionData =  encode(collection)
-            const data = new Uint8Array(msgpackPreifx.length + collectionData.length);
-            data.set(new TextEncoder().encode(msgpackPreifx));
-            data.set(collectionData, msgpackPreifx.length);
+            console.log(`sending logs: ${JSON.stringify(collection)}`)
+            // const collectionData = concatenateUint8Arrays(
+            //     collection.map((item) => encode(item)),
+            // )
+            // const gzippedBody = gzip(encode(collectionData))
+            const gzippedBody = gzip(encode(collection))
             collection = []
-            const gzippedBody = gzip(data)
-            fetch(opts.url, {
-                method: 'POST',
-                mode: 'same-origin',
+            await fetch(opts.url, {
+                method: "POST",
+                mode: "same-origin",
                 headers: {
-                  'Content-Encoding': 'gzip',
-                  'Content-Type': 'application/x-www-form-urlencoded'
+                    "Content-Encoding": "gzip",
+                    "Content-Type": "application/msgpack",
                 },
-                body: gzippedBody
-              })
+                body: gzippedBody,
+            })
         } catch (e) {
-            console.error(`pino-transmit-http: failed to send logs: ${exception2string(e)}`)
+            console.error(
+                `pino-transmit-http: failed to send logs: ${exception2string(
+                    e,
+                )}`,
+            )
         }
     }
     function flush() {
         if (collection.length === 0) {
             return
         }
-        let data: string = JSON.stringify(collection)
+        console.log(`sending logs as flush: ${JSON.stringify(collection)}`)
+        const collectionData = concatenateUint8Arrays(
+            collection.map((item) => encode(item)),
+        )
         collection = []
-
-        const success = window.navigator.sendBeacon(opts.url, data) 
-        if (!success) {
-            console.warn("pino-transmit-http: failed to flush logs using sendBeacon.")
-        }
+        const gzippedBody = gzip(collectionData)
+        window.navigator.sendBeacon(opts.url, gzippedBody)
     }
     let send: () => void
     if (opts.debounce !== null && opts.debounce !== undefined) {
         send = debounce(rawSend, opts.debounce)
-    } else if (opts.throttle !== null && opts.debounce !== undefined) {
+    } else if (opts.throttle !== null && opts.throttle !== undefined) {
         send = throttle(rawSend, opts.throttle, {
             trailing: true,
             leading: false,
@@ -109,9 +127,11 @@ export default function transmitHttp(
 
     if (typeof window !== "undefined") {
         window.addEventListener("unload", function onUnload() {
-            isUnloading = true // request the rawSend method to send logs synchroneously
             send = flush
             flush() // flush logs, no await as we are in an unload event
+        })
+        window.addEventListener("resize", function onResize() {
+            flush()
         })
     }
 
@@ -119,10 +139,18 @@ export default function transmitHttp(
         level: opts.level,
         send: function (_level, logEvent) {
             try {
-                collection.push(logEvent)
+                collection.push({
+                    time: logEvent.ts / 1000,
+                    level: logEvent.level.label,
+                    ...logEvent.messages[0],
+                })
                 send()
             } catch (e) {
-                console.error(`pino-transmit-http: Failed to transmit logs: ${exception2string(e)}`)
+                console.error(
+                    `pino-transmit-http: Failed to transmit logs: ${exception2string(
+                        e,
+                    )}`,
+                )
             }
         },
     }

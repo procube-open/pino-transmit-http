@@ -2793,13 +2793,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@procube/pino-transmit-http@workspace:*, @procube/pino-transmit-http@workspace:.":
+"@procube/pino-transmit-http@workspace:*, @procube/pino-transmit-http@workspace:package":
   version: 0.0.0-use.local
-  resolution: "@procube/pino-transmit-http@workspace:."
+  resolution: "@procube/pino-transmit-http@workspace:package"
   dependencies:
     "@changesets/cli": "npm:2.27.1"
     "@msgpack/msgpack": "npm:3.0.0-beta2"
-    "@procube/cs-tools": "npm:1.0.8"
     "@types/eslint": "npm:^8"
     "@types/lodash.debounce": "npm:4.0.9"
     "@types/lodash.throttle": "npm:4.1.9"
@@ -5507,6 +5506,16 @@ __metadata:
   version: 5.3.0
   resolution: "chalk@npm:5.3.0"
   checksum: 10c0/8297d436b2c0f95801103ff2ef67268d362021b8210daf8ddbe349695333eb3610a71122172ff3b0272f1ef2cf7cc2c41fdaa4715f52e49ffe04c56340feed09
+  languageName: node
+  linkType: hard
+
+"changeset@npm:0.2.6":
+  version: 0.2.6
+  resolution: "changeset@npm:0.2.6"
+  dependencies:
+    udc: "npm:^1.0.0"
+    underscore: "npm:^1.8.3"
+  checksum: 10c0/6a8139aec4d192c96411eee786b5d50160ba012b299378f1086958379efd090b265885763ab5d558f87e49b2b18d887775230b2c4b6b5f8a6c0efc0c9a147d33
   languageName: node
   linkType: hard
 
@@ -13715,6 +13724,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"root@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "root@workspace:."
+  dependencies:
+    "@procube/cs-tools": "npm:1.0.8"
+    changeset: "npm:0.2.6"
+  languageName: unknown
+  linkType: soft
+
 "run-parallel@npm:^1.1.9":
   version: 1.2.0
   resolution: "run-parallel@npm:1.2.0"
@@ -15463,6 +15481,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"udc@npm:^1.0.0":
+  version: 1.0.1
+  resolution: "udc@npm:1.0.1"
+  checksum: 10c0/9e2e5dfe4fc0cd6d807b8be9fee327efc8c65319a94e8f32afab6837347e61ddb7d9844edc106cdda2f0feefd5939a49da97f1346522ac7bdf9fb68cbaab80c0
+  languageName: node
+  linkType: hard
+
 "unbox-primitive@npm:^1.0.2":
   version: 1.0.2
   resolution: "unbox-primitive@npm:1.0.2"
@@ -15479,6 +15504,13 @@ __metadata:
   version: 1.12.1
   resolution: "underscore@npm:1.12.1"
   checksum: 10c0/00f392357e363353ac485e7c156b749505087e31ff4fdad22e04ebd2f94a56fbc554cd41a6722e3895a818466cf298b1cae93ff6211d102d373a9b50db63bfd0
+  languageName: node
+  linkType: hard
+
+"underscore@npm:^1.8.3":
+  version: 1.13.6
+  resolution: "underscore@npm:1.13.6"
+  checksum: 10c0/5f57047f47273044c045fddeb8b141dafa703aa487afd84b319c2495de2e685cecd0b74abec098292320d518b267c0c4598e45aa47d4c3628d0d4020966ba521
   languageName: node
   linkType: hard
 

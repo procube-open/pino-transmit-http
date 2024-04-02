@@ -5,7 +5,7 @@ Thanks for [sventschui](https://github.com/sventschui).
 
 This is a browser transmit for the [Pino](https://github.com/pinojs/pino) logger
 that sends log statements created in a browser environment to a remote server using
-HTTP calls (XHR, fetch or sendBeacon depending on availability).
+HTTP calls (fetch or sendBeacon depending on timing).
 
 You can use it like so:
 
@@ -13,26 +13,27 @@ You can use it like so:
 $ npm install pino @procube/pino-transmit-http
 ```
 
-```js
-const pino = require('pino');
-const pinoTransmitHttp = require('pino-transmit-http');
+```ts
+import pino from "pino"
+import pinoTransmitHttp from "@procube/pino-transmit-http"
 
 const logger = pino({
   browser: {
-    transmit: pinoTransmitHttp()
+    asObject: false,
+    transmit: pinoTransmitHttp({throttle: 30000, url: '/operations'})
   }
 })
 
-logger.warn('hello pino')
+logger.warn({operation: "extends", args: {target: "map", layer: "road"}})
 ```
 
-A HTTP request will by default look like this
+A HTTP request will by default look like this, but acutuary format is gzipped msgpack.
 
 ```json
-POST /log
-Content-Type: application/json;charset=UTF-8
+POST /operation
+Content-Type: application/json
 
-[{"ts":1531919330334,"messages":["hello pino"],"bindings":[],"level":{"label":"warn","value":40}}]
+[{"ts":1531919330334, operation: "extends", args: {target: "map", layer: "road"}, "level": "warn"}]
 ```
 
 Options that can be passed to `pinoTransmitHttp({ ... })`:

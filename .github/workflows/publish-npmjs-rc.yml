@@ -21,7 +21,7 @@ jobs:
         run: echo "pre=$(test -r .changeset/pre.json; echo $?)"  >> "$GITHUB_OUTPUT"
       - name: Get package scope to be released
         id: get-scope
-        run: node -e "console.log('scope=' + require('./package.json').name.split('/')[0])" >> "$GITHUB_OUTPUT"
+        run: node -e "console.log('scope=' + require('./package/package.json').name.split('/')[0])" >> "$GITHUB_OUTPUT"
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
@@ -34,8 +34,11 @@ jobs:
       - name: Publish npm package
         if: ${{ steps.check-in-pre.outputs.pre == 0 }}
         run: |
+          cd package
+          echo npmAuthToken: "$NODE_AUTH_TOKEN" >> ./.yarnrc.yml
+          echo "npmRegistryServer: 'https://registry.npmjs.org/'" >> .yarnrc.yml
           yarn install
           yarn build
-          yarn npm publish
+          yarn npm publish --access=public
         env:
-          NPM_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}

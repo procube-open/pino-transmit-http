@@ -9,7 +9,7 @@ services:
       LOGDB_ROOT_USER: root
       LOGDB_ROOT_PASSWORD: testpassword
       LOGDB_USER: fluent
-      LDGDB_PASSWORD: testpassword
+      LOGDB_PASSWORD: testpassword
     # ports:
     #   - 80:80
 
@@ -37,23 +37,11 @@ services:
       ME_CONFIG_MONGODB_SERVER: mongo-db
     depends_on:
       - mongo-db
-    profiles:
-      - test
-  # log-analyzer:
-  #   container_name: log-analyzer.${INTERNAL_DOMAIN_SUFFIX}
-  #   image: metabase/metabase:latest
-  #   environment:
-  #     - MB_DB_FILE=/metabase-data/metabase.db
-  #   # ports 3000
-  #   volumes:
-  #     - metabase_data:/metabase-data
 volumes:
   log_db:
     driver: local
   log_db_config:
     driver: local
-  # metabase_data:
-  #   driver: local
 networks:
   default:
     name: app-network
