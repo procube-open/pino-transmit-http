@@ -35,6 +35,7 @@ jobs:
         if: ${{ steps.check-in-pre.outputs.pre == 0 }}
         run: |
           cd package
+          echo npmAuthToken: "$NODE_AUTH_TOKEN" >> ./.yarnrc.yml
           yarn install
           yarn build
           yarn npm publish

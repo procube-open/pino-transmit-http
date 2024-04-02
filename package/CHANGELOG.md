@@ -1,5 +1,11 @@
 # @procube/pino-transmit-http
 
+## 1.0.0-rc.3
+
+### Minor Changes
+
+- Fix error no token
+
 ## 1.0.0-rc.2
 
 ### Major Changes
