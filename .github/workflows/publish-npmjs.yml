@@ -34,7 +34,7 @@ jobs:
           scope: ${{ steps.get-scope.scope.version }}
       - name: Get version to be released
         id: get-version
-        run: node -e "console.log('version=' + require('./pacakge/package.json').version)" >> "$GITHUB_OUTPUT"
+        run: node -e "console.log('version=' + require('./package/package.json').version)" >> "$GITHUB_OUTPUT"
       - name: Publish npm package
         if: ${{steps.check-in-pre.outputs.pre == 1 }}
         run: |
