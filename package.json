@@ -2,7 +2,6 @@
   "name": "root",
   "version": "1.0.0",
   "license": "MIT",
-  "private": false,
   "workspaces": {
     "packages": [
       "package",
@@ -10,7 +9,8 @@
     ]
   },
   "devDependencies": {
-    "@procube/cs-tools": "1.0.8",
-    "changeset": "0.2.6"
-  }
+    "@changesets/cli": "2.27.5",
+    "@procube/cs-tools": "1.0.8"
+  },
+  "packageManager": "yarn@4.1.1"
 }
