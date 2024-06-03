@@ -6,6 +6,18 @@
 
 -   Set yarn engine to 1.22.0
 
+## 2.0.1
+
+### Patch Changes
+
+-   a275909: Set yarn engine to 1.22.0
+
+## 2.0.1-rc.0
+
+### Patch Changes
+
+-   Set yarn engine to 1.22.0
+
 ## 2.0.0
 
 ### Major Changes
