@@ -1,5 +1,13 @@
 # client
 
+## 0.1.6
+
+### Patch Changes
+
+- Updated dependencies [4302ab0]
+- Updated dependencies [ee64530]
+  - @procube/pino-transmit-http@2.0.3
+
 ## 0.1.6-rc.1
 
 ### Patch Changes
