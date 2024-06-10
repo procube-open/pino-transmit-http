@@ -1,5 +1,26 @@
 # @procube/pino-transmit-http
 
+## 2.0.2
+
+### Patch Changes
+
+-   b0371cb: Set yarn engine to 1.22.0
+-   b59c456: Support the dual package.
+-   b59c456: Support the dual package.
+
+## 2.0.2-rc.1
+
+### Patch Changes
+
+-   Support the dual package.
+
+## 2.0.2-rc.0
+
+### Patch Changes
+
+-   b0371cb: Set yarn engine to 1.22.0
+-   Support the dual package.
+
 ## 2.0.1-rc.0
 
 ### Patch Changes
