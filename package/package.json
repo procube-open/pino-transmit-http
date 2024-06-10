@@ -1,6 +1,6 @@
 {
   "name": "@procube/pino-transmit-http",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "A pino browser transmit that send log statements over HTTP",
   "main": "dist/index.js",
   "engines": {
@@ -17,7 +17,7 @@
       },
       "require": {
         "types": "./dist/cjs/index.d.ts",
-        "default": "./dist/cjs/index.js"
+        "default": "./dist/cjs/index.cjs"
       },
       "default": "./dist/index.js"
     }
@@ -26,7 +26,7 @@
     "test": "tap 'test/**/*.test.js'",
     "lint": "eslint",
     "build": "yarn build:cjs && yarn build:esm",
-    "build:cjs": "tsc -p tsconfig.cjs.json",
+    "build:cjs": "tsc -p tsconfig.cjs.json && mv dist/cjs/index.js dist/cjs/index.cjs",
     "build:esm": "tsc -p tsconfig.json",
     "start": "ts-node --esm index.ts ",
     "ci": "eslint && tap --cov 'test/**/*.test.js'"
