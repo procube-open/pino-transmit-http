@@ -1,5 +1,11 @@
 # @procube/pino-transmit-http
 
+## 2.0.3-rc.0
+
+### Patch Changes
+
+-   Renamed the cjs module to index.cjs.
+
 ## 2.0.2
 
 ### Patch Changes

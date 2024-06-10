@@ -1,0 +1,11 @@
+{
+  "mode": "pre",
+  "tag": "rc",
+  "initialVersions": {
+    "@procube/pino-transmit-http": "2.0.2",
+    "client": "0.1.5"
+  },
+  "changesets": [
+    "small-needles-applaud"
+  ]
+}
