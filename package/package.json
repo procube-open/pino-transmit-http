@@ -1,6 +1,6 @@
 {
   "name": "@procube/pino-transmit-http",
-  "version": "2.0.1",
+  "version": "2.0.2-rc.1",
   "description": "A pino browser transmit that send log statements over HTTP",
   "main": "dist/index.js",
   "engines": {
@@ -10,18 +10,18 @@
   },
   "type": "module",
   "exports": {
-	".": {
-		"import": {
-			"types": "./dist/index.d.ts",
-			"default": "./dist/index.js"
-		},
-		"require": {
-			"types": "./dist/cjs/index.d.ts",
-			"default": "./dist/cjs/index.js"
-		},
-		"default": "./dist/index.js"
-	}
-},
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/cjs/index.d.ts",
+        "default": "./dist/cjs/index.js"
+      },
+      "default": "./dist/index.js"
+    }
+  },
   "scripts": {
     "test": "tap 'test/**/*.test.js'",
     "lint": "eslint",

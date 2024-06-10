@@ -2,10 +2,12 @@
   "mode": "pre",
   "tag": "rc",
   "initialVersions": {
-    "@procube/pino-transmit-http": "2.0.0",
-    "client": "0.1.3"
+    "@procube/pino-transmit-http": "2.0.1",
+    "client": "0.1.4"
   },
   "changesets": [
-    "dirty-camels-sit"
+    "dirty-camels-sit",
+    "mean-bugs-search",
+    "strange-colts-boil"
   ]
 }
