@@ -1,5 +1,11 @@
 # @procube/pino-transmit-http
 
+## 2.0.4-rc.0
+
+### Patch Changes
+
+-   add asJson param on option
+
 ## 2.0.3
 
 ### Patch Changes

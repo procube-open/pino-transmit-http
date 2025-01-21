@@ -1,0 +1,60 @@
+#                                    __   __  __
+#                                    \ \ / / / /
+#                                     \ V / / /
+#                                      \_/  \/
+#
+#                                    V E C T O R
+#                                   Configuration
+#
+# ------------------------------------------------------------------------------
+# Website: https://vector.dev
+# Docs: https://vector.dev/docs
+# Chat: https://chat.vector.dev
+# ------------------------------------------------------------------------------
+
+sources:
+  http_server:
+    type: "http_server"
+    address: "0.0.0.0:80"
+    path: "/operations/vector"
+    response_code: 204
+    framing:
+      method: "bytes"
+      chunked_gelf:
+        decompression: "gzip"
+
+transforms:
+  parse_json:
+    type: "remap"
+    inputs: 
+      - "http_server"
+    source: ". = parse_json!(.message)"
+  format_log:
+    type: "remap"
+    inputs: 
+      - "parse_json"
+    source: |
+      time, _ = .time * 1000
+      .timestamp = from_unix_timestamp!(to_int(float!(time)), unit: "milliseconds")
+      .message = .msg
+      del(.time)
+      del(.msg)
+
+sinks:
+  influxdb:
+    type: "influxdb_logs"
+    inputs:
+      - "format_log"
+    bucket: "vector-bucket"
+    measurement: "pino-logs"
+    endpoint: "http://influx_db:8086"
+    healthcheck: false
+    org: "vector-org"
+    token: "vector-admin-token-123"
+  # Print formatted logs to stdout
+  print:
+    type: "console"
+    inputs: 
+      - "format_log"
+    encoding:
+      codec: "json"

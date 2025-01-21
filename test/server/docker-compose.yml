@@ -37,10 +37,34 @@ services:
       ME_CONFIG_MONGODB_SERVER: mongo-db
     depends_on:
       - mongo-db
+
+  vector:
+    image: timberio/vector:latest-alpine
+    container_name: vector
+    # restart: always
+    volumes:
+      - ./vector:/etc/vector
+  influxdb:
+    image: influxdb:latest
+    container_name: influx_db
+    volumes:
+      - influxdb2:/var/lib/influxdb2
+    ports:
+      - 8086:8086
+    environment:
+      - DOCKER_INFLUXDB_INIT_MODE=setup
+      - DOCKER_INFLUXDB_INIT_USERNAME=admin
+      - DOCKER_INFLUXDB_INIT_PASSWORD=password
+      - DOCKER_INFLUXDB_INIT_ORG=vector-org
+      - DOCKER_INFLUXDB_INIT_BUCKET=vector-bucket
+      - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=vector-admin-token-123
+
 volumes:
   log_db:
     driver: local
   log_db_config:
+    driver: local
+  influxdb2:
     driver: local
 networks:
   default:

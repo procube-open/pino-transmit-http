@@ -1,0 +1,11 @@
+{
+  "mode": "pre",
+  "tag": "rc",
+  "initialVersions": {
+    "@procube/pino-transmit-http": "2.0.3",
+    "client": "0.1.6"
+  },
+  "changesets": [
+    "lazy-kangaroos-flash"
+  ]
+}
