@@ -42,4 +42,5 @@ key | default | description
 --- | --- | ---
 throttle | `500` | Amount of milliseconds to throttle the transmission of the log messages. Note that `trailing = true, leading = false` is used. See [lodash.throttle](https://lodash.com/docs#throttle)
 debounce | `null` | Amount of milliseconds to debounce the transmission of the log messages. See [lodash.debounce](https://lodash.com/docs#debounce). If null then throttling is used
+asJson | false | If set to true, requests will be sent in gzipped JSON format instead of msgpack
 url | `'/log'` | location where to send logs
