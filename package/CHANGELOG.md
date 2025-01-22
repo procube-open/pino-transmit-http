@@ -1,5 +1,11 @@
 # @procube/pino-transmit-http
 
+## 2.0.4-rc.1
+
+### Patch Changes
+
+-   fix container_name of influxdb
+
 ## 2.0.4-rc.0
 
 ### Patch Changes

@@ -1,5 +1,13 @@
 # client
 
+## 0.1.7-rc.1
+
+### Patch Changes
+
+- fix container_name of influxdb
+- Updated dependencies
+  - @procube/pino-transmit-http@2.0.4-rc.1
+
 ## 0.1.7-rc.0
 
 ### Patch Changes

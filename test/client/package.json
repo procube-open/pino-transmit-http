@@ -1,6 +1,6 @@
 {
   "name": "client",
-  "version": "0.1.7-rc.0",
+  "version": "0.1.7-rc.1",
   "private": true,
   "dependencies": {
     "@procube/pino-transmit-http": "workspace:*",

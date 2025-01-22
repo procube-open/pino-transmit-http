@@ -47,7 +47,7 @@ sinks:
       - "format_log"
     bucket: "vector-bucket"
     measurement: "pino-logs"
-    endpoint: "http://influx_db:8086"
+    endpoint: "http://influxdb:8086"
     healthcheck: false
     org: "vector-org"
     token: "vector-admin-token-123"
