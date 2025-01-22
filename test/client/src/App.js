@@ -10,17 +10,28 @@ const logger = pino({
     transmit: pinoTransmitHttp({throttle: 30000, url: '/operations'})
   }
 })
+const logger_vector = pino({
+  browser: {
+    asObject: false,
+    transmit: pinoTransmitHttp({throttle: 30000, url: '/operations/vector', asJson: true})
+  }
+})
 
 async function log() {
   logger.info({msg: "Hello, World!", operation: "start"})
+  logger_vector.info({msg: "Hello, World!", operation: "start"})
   await sleep(1000)
   logger.info({msg: "Working now. 1000", operation: "update"})
+  logger_vector.info({msg: "Working now. 1000", operation: "update"})
   await sleep(1000)
   logger.info({msg: "Working now. 2000", operation: "update"})
+  logger_vector.info({msg: "Working now. 2000", operation: "update"})
   await sleep(30000)
   logger.info({msg: "Working now. 33000", operation: "update"})
+  logger_vector.info({msg: "Working now. 33000", operation: "update"})
   await sleep(1000)
   logger.info({msg: "Working now. 34000", operation: "update"})
+  logger_vector.info({msg: "Working now. 34000", operation: "update"})
 }
 
 let started = false

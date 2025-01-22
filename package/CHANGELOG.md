@@ -1,5 +1,31 @@
 # @procube/pino-transmit-http
 
+## 2.0.4
+
+### Patch Changes
+
+-   a9da08d: add asJson param on option
+-   ac0ef41: fix container_name of influxdb
+-   6215105: write README.md
+
+## 2.0.4-rc.2
+
+### Patch Changes
+
+-   write README.md
+
+## 2.0.4-rc.1
+
+### Patch Changes
+
+-   fix container_name of influxdb
+
+## 2.0.4-rc.0
+
+### Patch Changes
+
+-   add asJson param on option
+
 ## 2.0.3
 
 ### Patch Changes

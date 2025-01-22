@@ -1,5 +1,39 @@
 # client
 
+## 0.1.7
+
+### Patch Changes
+
+- a9da08d: add asJson param on option
+- ac0ef41: fix container_name of influxdb
+- Updated dependencies [a9da08d]
+- Updated dependencies [ac0ef41]
+- Updated dependencies [6215105]
+  - @procube/pino-transmit-http@2.0.4
+
+## 0.1.7-rc.2
+
+### Patch Changes
+
+- Updated dependencies
+  - @procube/pino-transmit-http@2.0.4-rc.2
+
+## 0.1.7-rc.1
+
+### Patch Changes
+
+- fix container_name of influxdb
+- Updated dependencies
+  - @procube/pino-transmit-http@2.0.4-rc.1
+
+## 0.1.7-rc.0
+
+### Patch Changes
+
+- add asJson param on option
+- Updated dependencies
+  - @procube/pino-transmit-http@2.0.4-rc.0
+
 ## 0.1.6
 
 ### Patch Changes

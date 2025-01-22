@@ -7,11 +7,13 @@ import { gzip } from "pako"
 interface Options extends LoggerOptions {
     throttle?: number
     debounce?: number
+    asJson?: boolean
     url: string
 }
 
 const defaultOptions: Options = {
     throttle: 500,
+    asJson: false,
     url: "/log",
 }
 
@@ -75,14 +77,15 @@ export default function transmitHttp(
             //     collection.map((item) => encode(item)),
             // )
             // const gzippedBody = gzip(encode(collectionData))
-            const gzippedBody = gzip(encode(collection))
+            const body = opts.asJson ? JSON.stringify(collection) : encode(collection)
+            const gzippedBody = gzip(body)
             collection = []
             await fetch(opts.url, {
                 method: "POST",
                 mode: "same-origin",
                 headers: {
                     "Content-Encoding": "gzip",
-                    "Content-Type": "application/msgpack",
+                    "Content-Type": opts.asJson ? "application/json" : "application/msgpack",
                 },
                 body: gzippedBody,
             })
