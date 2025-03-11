@@ -1,5 +1,17 @@
 # @procube/pino-transmit-http
 
+## 2.0.5
+
+### Patch Changes
+
+-   5ca6aa7: Remove npm version restriction
+
+## 2.0.5-rc.0
+
+### Patch Changes
+
+-   Remove npm version restriction
+
 ## 2.0.4
 
 ### Patch Changes
